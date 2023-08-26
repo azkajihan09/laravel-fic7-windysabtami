@@ -14,9 +14,9 @@ class UserController extends Controller
     public function index(Request $request)
     {
         // $users = User::paginate(10);
-$users = DB::table('users')->when($request->input('search'), function ($query, $search) {
-$query->where('name', 'like', '%'.$search.'%');
-})->paginate(5);  
+        $users = DB::table('users')->when($request->input('search'), function ($query, $search) {
+            $query->where('name', 'like', '%' . $search . '%');
+        })->paginate(5);
 
 
         return view('pages.user.index', compact('users'));
@@ -72,4 +72,6 @@ $query->where('name', 'like', '%'.$search.'%');
     {
         //
     }
+
+    
 }
