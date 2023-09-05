@@ -24,6 +24,12 @@ return new class extends Migration
 
             $table->foreign('user_id', 'userid_foreign')->references('id')->on('users');
             $table->foreign('seller_id', 'sellerid_foreign')->references('id')->on('users');
+            
+
+
+
+
+
 
 
         });
