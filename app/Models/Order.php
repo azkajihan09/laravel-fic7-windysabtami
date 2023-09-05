@@ -15,6 +15,11 @@ class Order extends Model
         'payment_status', 'payment_url', 'delivery_address',
         'shipping_cost', 'courier_name',
     ];
+    
+
+    protected $casts = [
+        'total_price' => 'decimal:2',
+    ];
 
     public function user()
     {
