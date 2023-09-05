@@ -5,11 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Users extends Model
+class OrderItem extends Model
 {
     use HasFactory;
-    public function role()
-    {
-        return $this->belongsTo(Role::class);
-    }
+
+    protected $fillable = ['order_id', 'product_id', 'quantity'];
 }

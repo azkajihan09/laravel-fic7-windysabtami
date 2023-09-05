@@ -51,6 +51,7 @@
                                         <th>Email</th>
                                         <th>Phone</th>
                                         <th>Status</th>
+                                        <th>Role</th>
                                     </tr>
 
                                     @foreach ($users as $index => $user)
@@ -65,6 +66,7 @@
                                             {{ $user->email }}
                                         </td>
                                         <td>{{ $user->phone }}</td>
+
                                         <td>
                                             <div
                                                 class="badge @if ($user->email_verified_at != null) badge-primary @else badge-danger @endif">
@@ -79,8 +81,40 @@
 
 
                                         </td>
-                                    </tr>
+                                        <td>
+                                            <div {{--
+                                                class="badge {{ $user->role == 'admin' ? 'badge-primary'  : 'badge-dark' }}">
+                                                --}}
+                                                class="badge
+                                                @if ($user->role == 'admin')
+                                                badge-primary
+                                                @elseif ($user->role == 'user')
+                                                badge-warning
+                                                @else
+                                                badge-danger
+                                                @endif">
+                                                {{ $user->role }}
+                                                </span>
 
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <a href="{{ route('user.show', $user->id) }}"
+                                                    class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                                                <a href="{{ route('user.edit', $user->id) }}"
+                                                    class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
+                                            </div>
+                                        </td>
+
+
+                                        <td>
+                                            <a href="{{ route('user.show', $user->id) }}"
+                                                class="btn btn-success btn-sm"><i class="fas fa-eye"></i></a>
+
+
+                                        </td>
+                                    </tr>
                                     @endforeach
 
 
