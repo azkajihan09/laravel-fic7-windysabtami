@@ -47,7 +47,7 @@ class AuthController extends Controller
         $request->validate([
             'email' => 'required|string|email',
             'password' => 'required',
-            'name' => 'required'
+            'name' => 'required|string'
         ]);
 
         $user = User::create([
@@ -69,6 +69,9 @@ class AuthController extends Controller
         $request->user()->tokens()->delete();
         return response()->json([
             'message' => 'logout successfully',
+            'user' => $request->user(),
+
+            
         ]);
     }
 }
